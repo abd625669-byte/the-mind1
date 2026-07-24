@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Mind Café & Board Games | قاعة ذا مايند لألعاب اللوح</title>
+    <meta name="description" content="مرحباً بكم في The Mind Café & Board Games - اكتشف أفضل 30 لعبة لوحية لشخصين وثلاثة وأربعة أشخاص مع فيديوهات شرح تفاعلية وحجز طاولات مباشر.">
+    
+    <!-- Google Fonts: Cairo & Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Firebase SDK v12.16.0 Integration (Project: the-mind-d48e9) -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js";
+        import { getAnalytics, logEvent } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-analytics.js";
+        import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js";
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyAm0A3hlHLxkTr3a8Kt7QRYIdjLyqpf8cs",
+            authDomain: "the-mind-d48e9.firebaseapp.com",
+            projectId: "the-mind-d48e9",
+            storageBucket: "the-mind-d48e9.firebasestorage.app",
+            messagingSenderId: "220593058488",
+            appId: "1:220593058488:web:7fcad637154bfe961cfa4d",
+            measurementId: "G-5WSYN9KBQ2"
+        };
+
+        // Initialize Firebase App & Analytics
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const db = getFirestore(app);
+
+        // Expose Firebase services to window object for seamless UI integration
+        window.firebaseApp = app;
+        window.firebaseAnalytics = analytics;
+        window.firebaseDb = db;
+        window.firebaseAddDoc = addDoc;
+        window.firebaseCollection = collection;
+        window.firebaseTimestamp = serverTimestamp;
+        window.firebaseLogEvent = logEvent;
+
+        console.log("🔥 Firebase initialized successfully for The Mind Project (the-mind-d48e9)");
+    </script>
+</head>
+<body>
+
+    <!-- Background Sunburst Pattern -->
+    <div class="sunburst-bg"></div>
+
+    <!-- Top Announcement Banner -->
+    <div class="top-banner">
+        <div class="banner-content">
+            <span class="sparkle">✨</span>
+            <span>أهلاً بكم في <strong>The Mind Café & Board Games</strong> - المكان الأمثل لعشاق ألعاب اللوح والقهوة المختصة!</span>
+            <span class="sparkle">🎲</span>
+        </div>
+    </div>
+
+    <!-- Header & Navigation -->
+    <header class="main-header">
+        <div class="container header-container">
+            <div class="brand-identity">
+                <!-- Dedicated PNG Logo File (logo.png) -->
+                <div class="logo-wrapper" id="logoClick" title="The Mind Café & Board Games">
+                    <img src="logo.png" alt="The Mind Café & Board Games Logo" class="brand-logo-img">
+                </div>
+                <div class="brand-text">
+                    <h1 class="brand-title">THE MIND</h1>
+                    <p class="brand-subtitle">CAFÉ & BOARD GAMES • كافيه وألعاب اللوح</p>
+                </div>
+            </div>
+
+            <!-- Header Quick Actions -->
+            <div class="header-actions">
+                <button class="btn btn-outline" id="randomGameBtn">
+                    <i class="fa-solid fa-dice"></i>
+                    <span>اختر لي لعبة عشوائية!</span>
+                </button>
+                <button class="btn btn-primary" id="openReserveBtn">
+                    <i class="fa-solid fa-calendar-check"></i>
+                    <span>حجز طاولة</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section with Ribbon Banner (Styled like Poster & Speech Box) -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-banner-card">
+                <div class="doodle-star star-top-left">✦</div>
+                <div class="doodle-star star-top-right">✦</div>
+                <div class="doodle-star star-bottom-right">★</div>
+                
+                <!-- Ribbon Header (Speech Box Style) -->
+                <div class="ribbon-wrapper">
+                    <div class="ribbon-banner">
+                        <span class="ribbon-text">العطلة والأجواء وصلت 🎲</span>
+                    </div>
+                </div>
+                
+                <h2 class="hero-main-title">أجواء <span class="highlight-text">THE MIND</span> الكلاسيكية</h2>
+                <p class="hero-description">
+                    دليلك الشامل لأكثر من 30 لعبة لوحية مميزة مصنّفة حسب عدد اللاعبين (شخصين، 3 أشخاص، 4 أشخاص).
+                    تصفح صور الألعاب وشاهد فيديو الشرح لكل لعبة مباشرة قبل أن تبدأ اللعب!
+                </p>
+
+                <!-- Quick Category Navigation Tabs (2 Players, 3 Players, 4 Players) -->
+                <div class="player-nav-cards">
+                    <div class="player-nav-card active" data-player-filter="all">
+                        <div class="card-icon"><i class="fa-solid fa-layer-group"></i></div>
+                        <div class="card-info">
+                            <h3>كل الألعاب</h3>
+                            <span class="badge-count">30 لعبة</span>
+                        </div>
+                    </div>
+                    <div class="player-nav-card" data-player-filter="2">
+                        <div class="card-icon"><i class="fa-solid fa-user-group"></i></div>
+                        <div class="card-info">
+                            <h3>قائمة شخصين (2)</h3>
+                            <span class="badge-count">10 ألعاب</span>
+                        </div>
+                    </div>
+                    <div class="player-nav-card" data-player-filter="3">
+                        <div class="card-icon"><i class="fa-solid fa-users"></i></div>
+                        <div class="card-info">
+                            <h3>قائمة 3 أشخاص</h3>
+                            <span class="badge-count">10 ألعاب</span>
+                        </div>
+                    </div>
+                    <div class="player-nav-card" data-player-filter="4">
+                        <div class="card-icon"><i class="fa-solid fa-users-rectangle"></i></div>
+                        <div class="card-info">
+                            <h3>قائمة 4 أشخاص</h3>
+                            <span class="badge-count">10 ألعاب</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Section: Search & Filter Controls -->
+    <main class="main-content container">
+        
+        <!-- Search Bar Section (Above Category Filter as requested) -->
+        <div class="search-section-wrapper">
+            <div class="section-label">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <span>ابحث عن لعبتك المفضلة</span>
+            </div>
+            
+            <div class="search-bar-container">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                <input type="text" id="searchInput" placeholder="ابحث باسم اللعبة (مثال: Catan, كود نيمز, أزول...) أو نوع اللعبة..." autocomplete="off">
+                <button id="clearSearchBtn" class="clear-search-btn" title="مسح البحث">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Categories Filter List (Below Search Bar as requested) -->
+        <div class="categories-section-wrapper">
+            <div class="section-label">
+                <i class="fa-solid fa-tags"></i>
+                <span>تصنيفات الألعاب</span>
+            </div>
+
+            <div class="categories-chip-container" id="categoriesContainer">
+                <button class="category-chip active" data-category="all">
+                    <i class="fa-solid fa-border-all"></i> الكل
+                </button>
+                <button class="category-chip" data-category="استراتيجية">
+                    <i class="fa-solid fa-chess"></i> ألعاب استراتيجية
+                </button>
+                <button class="category-chip" data-category="ذكاء">
+                    <i class="fa-solid fa-brain"></i> ألعاب ذكاء وتحدي
+                </button>
+                <button class="category-chip" data-category="عائلية">
+                    <i class="fa-solid fa-house-chimney"></i> ألعاب عائلية
+                </button>
+                <button class="category-chip" data-category="ورق">
+                    <i class="fa-solid fa-cards"></i> ألعاب ورق
+                </button>
+                <button class="category-chip" data-category="خدع">
+                    <i class="fa-solid fa-user-ninja"></i> هويات خفية وخدع
+                </button>
+                <button class="category-chip" data-category="تداول">
+                    <i class="fa-solid fa-coins"></i> مقايضة وتداول
+                </button>
+                <button class="category-chip" data-category="سريعة">
+                    <i class="fa-solid fa-bolt"></i> ألعاب سريعة وحماسية
+                </button>
+            </div>
+        </div>
+
+        <!-- Active Filters Bar & Results Counter -->
+        <div class="filter-results-bar">
+            <div class="results-count">
+                عرض <strong id="visibleCount">30</strong> من أصل <strong>30</strong> لعبة
+            </div>
+            <div class="active-tag-indicator" id="activeTagIndicator">
+                <span id="activeTagText">جميع الألعاب</span>
+            </div>
+        </div>
+
+        <!-- 2 Players Section Banner Header -->
+        <div class="section-divider-banner" id="section2Players">
+            <div class="divider-ribbon">
+                <i class="fa-solid fa-user-group"></i>
+                <h2>قائمة ألعاب شخصين (10 ألعاب)</h2>
+            </div>
+            <p>ألعاب مخصصة لتحديات ثنائية ممتعة، تركيز عالي وتكتيك مثالي لشخصين.</p>
+        </div>
+        <!-- 2 Players Games Grid -->
+        <div class="games-grid" id="grid2Players"></div>
+
+        <!-- 3 Players Section Banner Header -->
+        <div class="section-divider-banner" id="section3Players">
+            <div class="divider-ribbon">
+                <i class="fa-solid fa-users"></i>
+                <h2>قائمة ألعاب 3 أشخاص (10 ألعاب)</h2>
+            </div>
+            <p>مزيج رائع بين التنافس الثلاثي والتكافؤ، خيارات ممتازة لمجموعة من ثلاثة أصدقاء.</p>
+        </div>
+        <!-- 3 Players Games Grid -->
+        <div class="games-grid" id="grid3Players"></div>
+
+        <!-- 4 Players Section Banner Header -->
+        <div class="section-divider-banner" id="section4Players">
+            <div class="divider-ribbon">
+                <i class="fa-solid fa-users-rectangle"></i>
+                <h2>قائمة ألعاب 4 أشخاص (10 ألعاب)</h2>
+            </div>
+            <p>أجواء حماسية وتفاعلية للمجموعات والفرق، خيارات خرافية للسهرة مع الأصحاب.</p>
+        </div>
+        <!-- 4 Players Games Grid -->
+        <div class="games-grid" id="grid4Players"></div>
+
+        <!-- No Results Fallback -->
+        <div class="no-results-box hidden" id="noResultsBox">
+            <i class="fa-solid fa-ghost"></i>
+            <h3>لم يتم العثور على ألعاب مطابقة لبحثك!</h3>
+            <p>جرب البحث بكلمة أخرى أو قم بإعادة ضبط التصنيفات.</p>
+            <button class="btn btn-primary" id="resetFiltersBtn">إعادة عرض كل الألعاب</button>
+        </div>
+
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="main-footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <img src="logo.png" alt="The Mind Logo" class="footer-logo-img">
+                </div>
+                <div>
+                    <h3>THE MIND CAFÉ & BOARD GAMES</h3>
+                    <p>وجهتك الأولى لتجربة أحدث وأجمل ألعاب اللوح مع أشهى المشروبات والمأكولات.</p>
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <h4>روابط سريعة</h4>
+                <ul>
+                    <li><a href="#section2Players">ألعاب شخصين</a></li>
+                    <li><a href="#section3Players">ألعاب 3 أشخاص</a></li>
+                    <li><a href="#section4Players">ألعاب 4 أشخاص</a></li>
+                    <li><a href="#" id="footerReserveLink">حجز طاولة جديدة</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-social">
+                <h4>تواصل معنا</h4>
+                <div class="social-icons">
+                    <a href="#" title="انستغرام"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" title="تيك توك"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="#" title="واتساب"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="#" title="الموقع الجغرافي"><i class="fa-solid fa-location-dot"></i></a>
+                </div>
+                <p class="working-hours"><i class="fa-regular fa-clock"></i> يومياً من الساعة 2:00 ظهراً حتى 12:00 ليلاً</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 The Mind Café & Board Games. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <!-- Video Modal overlay -->
+    <div class="modal-overlay hidden" id="videoModal">
+        <div class="modal-card video-modal-card">
+            <button class="modal-close-btn" id="closeVideoModalBtn" title="إغلاق">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="video-modal-header">
+                <span class="video-badge"><i class="fa-solid fa-play"></i> فيديو شرح اللعبة</span>
+                <h3 id="videoModalTitle">اسم اللعبة</h3>
+                <p id="videoModalSubtitle">شاهد طريقة اللعب وشرح القواعد</p>
+            </div>
+            <div class="video-wrapper">
+                <iframe id="videoIframe" src="" title="Game Tutorial Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="video-modal-footer">
+                <div class="game-quick-meta" id="videoModalMeta">
+                    <!-- Dynamic details injected by JS -->
+                </div>
+                <button class="btn btn-primary" id="reserveFromVideoBtn">
+                    <i class="fa-solid fa-calendar-check"></i> طلب اللعبة لطاولتك
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reservation Modal overlay -->
+    <div class="modal-overlay hidden" id="reserveModal">
+        <div class="modal-card reserve-modal-card">
+            <button class="modal-close-btn" id="closeReserveModalBtn" title="إغلاق">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="modal-header">
+                <i class="fa-solid fa-dice-d6 header-icon"></i>
+                <h3>حجز طاولة في The Mind</h3>
+                <p>اختر تاريخ ووقت الحجز واللعبة التي تود تجهيزها لك!</p>
+            </div>
+            <form id="reserveForm">
+                <div class="form-group">
+                    <label for="resName">الاسم الكامل *</label>
+                    <input type="text" id="resName" required placeholder="أدخل اسمك الكريم">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="resPlayers">عدد الأشخاص *</label>
+                        <select id="resPlayers" required>
+                            <option value="2">شخصين (2)</option>
+                            <option value="3">3 أشخاص</option>
+                            <option value="4">4 أشخاص</option>
+                            <option value="5+">5 أشخاص أو أكثر</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="resDate">التاريخ *</label>
+                        <input type="date" id="resDate" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="resGame">اللعبة المفضل تجهيزها (اختياري)</label>
+                    <select id="resGame">
+                        <option value="">-- اختر من قائمة الألعاب --</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="resNotes">ملاحظات إضافية</label>
+                    <textarea id="resNotes" rows="3" placeholder="أي طلبات خاصة أو وقت معين..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">
+                    <i class="fa-brands fa-whatsapp"></i> إرسال الحجز عبر الواتساب
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Main JavaScript -->
+    <script src="app.js"></script>
+</body>
+</html>
